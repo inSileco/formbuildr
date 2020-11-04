@@ -1,0 +1,25 @@
+Package: formbuildr
+Title: Form builder
+Date: 2020-11-03
+Version: 0.0.0.9000
+Authors@R: c(
+  person("Kevin", "Cazelles", email = "kevin.cazelles@gmail.com", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre")),
+  person("Nicolas", "Casajus", role = c("aut"))
+  )
+Description: Build forms with the command line interface.
+Depends:
+    R (>= 3.2)
+License: GPL-3
+Imports:
+    cli,
+    crayon,
+    glue
+Suggests:
+    knitr,
+    testthat
+URL: https://github.com/inSileco/formbuildr, http://insileco.github.io/formbuildr
+BugReports: https://github.com/inSileco/formbuildr/issues
+Encoding: UTF-8
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)
