@@ -13,7 +13,8 @@ License: GPL-3
 Imports:
     cli,
     crayon,
-    glue
+    glue,
+    yaml
 Suggests:
     knitr,
     testthat
