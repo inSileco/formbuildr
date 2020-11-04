@@ -1,8 +1,8 @@
 # formbuildr
-![R-CMD-check](https://github.com/inSileco/formbuildr/workflows/R-CMD-check/badge.svg)
-[[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)](https://github.com/inSileco/formbuildr/actions?query=workflow%3AR-CMD-check)
+[![R-CMD-check](https://github.com/inSileco/formbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/inSileco/formbuildr/actions?query=workflow%3AR-CMD-check)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-R :package: to build forms with the command line interface.
+An R :package: to build forms with the command line interface.
 
 
 ```R
@@ -35,8 +35,6 @@ Enter your choice: 1
 [1] TRUE
 
 ```
-
-
 
 
 # Meta 
