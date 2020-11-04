@@ -38,7 +38,7 @@ $shake
 attr(,"class")
 [1] "form_answers"
 
-R> export_form(res, "answers.yaml")   
+R> export_answer(res, "answers.yaml")   
 ```
 
 the last line returns `answers.yaml` with the following content: 
