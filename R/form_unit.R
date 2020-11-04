@@ -13,7 +13,7 @@ form_unit <- function(msg, validate = "*", transform = NULL) {
   } else tmp
 }
 
-generate_form_unit <- function(msg, question = NULL, choices = NULL, validate = "*", pre = NULL, post = NULL) {
+generate_form_unit <- function(msg, question = NULL, choices = NULL, validate = "*", pre = NULL, post = NULL, field_name = "") {
   
   out <- function() {
       
@@ -32,17 +32,16 @@ generate_form_unit <- function(msg, question = NULL, choices = NULL, validate = 
     
     valid()
     
-    if (is.function(post)) {
-      post(tmp)
-    } else tmp
+    if (is.function(post)) post(tmp) else tmp
     
+    tmp
   } 
   
-  structure(out, class = "form_partial")
+  structure(out, class = "form_partial", field_name = field_name)
 }
 
 
-generate_form_unit_choices <- function(question, choices, output = "choice") {
+generate_form_unit_choices <- function(question, choices, output = "choice", field_name = "") {
   
   output <- match.arg(output, c("choice", "id"))
   
@@ -69,9 +68,11 @@ generate_form_unit_choices <- function(question, choices, output = "choice") {
       choices[tmp]
     } else tmp
     
+    tmp
+    
   } 
   
-  structure(out, class = "form_partial")
+  structure(out, class = "form_partial",  field_name = field_name)
 }
 
 

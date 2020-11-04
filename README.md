@@ -6,34 +6,47 @@ An R :package: to build forms with the command line interface.
 
 
 ```R
-R> q1 <- one_among("Fruits?", c("Apple", "Pear")) 
-R> q2 <- yes_or_no("Be or not to be?")
-R> q3 <- yes_or_no("KevCaz?")
+R> q1 <- one_among("Fruits?", c("Apple", "Pear"), "fruit") 
+R> q2 <- yes_or_no("Be or not to be?", "shake")
+R> q3 <- yes_or_no("R u doing ok?")
 R> myform <- q1 %+% q2 %+% q3
-R> myform() 
 ❓ Fruits?
 ℹ Multiple choices
 1 :  Apple 
 2 :  Pear 
-Enter your choice: 1
+Enter your choice: 1 
 ✔ validated!
 ❓ Be or not to be?
-[Y]es or [No]: no
+[Y]es or [No]: no 
 ✔ validated!
-❓ KevCaz?
-[Y]es or [No]: yup
+❓ R u doing ok?
+[Y]es or [No]: grrr   
 ⚠ Validation failed, try again!
-[Y]es or [No]: Y 
+[Y]es or [No]: Y      
 ✔ validated!
-[[1]]
-[1] "Apple"
 
-[[2]]
-[1] FALSE
+R> res
+$fruit
+[1] 1
+
+$shake
+[1] "NO"
 
 [[3]]
-[1] TRUE
+[1] "Y"
 
+attr(,"class")
+[1] "form_answers"
+
+R> export_form(res, "answers.yaml")   
+```
+
+the last line returns `answers.yaml` with the following content: 
+
+```yaml
+fruit: 1.0
+shake: 'NO'
+'': 'Y'
 ```
 
 

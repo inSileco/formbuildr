@@ -4,10 +4,12 @@
 \alias{yes_or_no}
 \title{A binary question to be answered by Yes or No.}
 \usage{
-yes_or_no(question)
+yes_or_no(question, field_name = "")
 }
 \arguments{
 \item{question}{The question to be asked.}
+
+\item{field_name}{Name of the field (optional).}
 }
 \value{
 \code{TRUE} for yes and \code{FALSE} for No.

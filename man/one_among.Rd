@@ -4,12 +4,14 @@
 \alias{one_among}
 \title{A binary question to be answered by Yes or No.}
 \usage{
-one_among(question, choices, output = "choice")
+one_among(question, choices, field_name = NULL, output = "choice")
 }
 \arguments{
 \item{question}{The question to be asked.}
 
 \item{choices}{A vector of choices.}
+
+\item{field_name}{Name of the field (optional).}
 
 \item{output}{Either "choice" or "id".}
 }

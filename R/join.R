@@ -14,10 +14,21 @@ join <- function(x, y) {
     r1 <- x()
     r2 <- y()
     if (class(x) == "form" | class(y) == "form") {
-      c(r1, r2)
-    } else list(r1, r2)
+      out <- c(r1, r2)
+    } else {
+      out <- list(r1, r2)
+    }
+    
+    if (class(x) == "form_partial") 
+      names(out)[1] <- attributes(x)$field_name
+    if (class(y) == "form_partial") 
+      names(out)[length(out)] <- attributes(y)$field_name
+            
+    structure(out, class = "form_answers")
   }, class = "form")
+  
 }
 
-
+#' @describeIn join join operator.
+#' @export
 '%+%' <- function(x, y) join(x, y)

@@ -2,9 +2,12 @@
 % Please edit documentation in R/join.R
 \name{join}
 \alias{join}
+\alias{\%+\%}
 \title{objects of class \code{form_partial} or \code{form}}
 \usage{
 join(x, y)
+
+x \%+\% y
 }
 \arguments{
 \item{x, y}{objects of class \code{form_partial} or \code{form}.}
@@ -15,3 +18,8 @@ join(x, y)
 \description{
 objects of class \code{form_partial} or \code{form}
 }
+\section{Functions}{
+\itemize{
+\item \code{\%+\%}: join operator.
+}}
+
