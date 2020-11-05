@@ -27,8 +27,9 @@ msgWarning <- function(..., appendLF = TRUE) {
 }
 
 msgQuestion <- function(..., appendLF = TRUE) {
-  txt <- paste(cli::symbol$fancy_question_mark, ...)
-  message(blue(txt), appendLF = appendLF)
+  txt <- paste(cli::symbol$fancy_question_mark, ..., 
+      cli::symbol$fancy_question_mark)
+  message(txt, appendLF = appendLF)
   invisible(txt)
 }
 

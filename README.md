@@ -7,23 +7,23 @@ An R :package: to build forms with the command line interface.
 
 ```R
 R> q1 <- one_among("Fruits?", c("Apple", "Pear"), "fruit")
-R> q2 <- yes_or_no("Be or not to be?", "shake")
+R> q2 <- yes_or_no("Be or not to be", "shake")
 R> q3 <- match_pattern("3 letters + 1 digit", "^[A-Za-z]{3}[0-9]$")
 R> myform <- q1 %+% q2 %+% q3
 R> res <- myform()   
-❓ Fruits?
-ℹ Multiple choices
-1 :  Apple
-2 :  Pear
-Enter your choice: 1
+❓ Fruits? ❓
+ℹ Multiple choices:
+1 :  Apple 
+2 :  Pear 
+Enter your choice: 1  
 ✔ validated!
-❓ Be or not to be?
-[Y]es or [N]o: no 
+❓ Be or not to be? ❓
+Enter [Y]es or [N]o: no
 ✔ validated!
-❓ 3 letters + 1 digit
-Enter your answer: jjjj
+❓ 3 letters + 1 digit ❓
+Enter your answer:1111
 ⚠ Validation failed, try again!
-Enter your answer: oki7
+Enter your answer:oki8
 ✔ validated!
 
 R> res 
@@ -34,7 +34,7 @@ $shake
 [1] FALSE
 
 $answer_3
-[1] "oki7"
+[1] "oki8"
 
 attr(,"class")
 [1] "form_answers"
@@ -47,7 +47,7 @@ the last line returns `answers.yaml` with the following content:
 ```yaml
 fruit: Apple
 shake: no
-answer_3: oki7
+answer_3: oki8
 ```
 
 

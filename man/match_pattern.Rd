@@ -4,7 +4,13 @@
 \alias{match_pattern}
 \title{A binary question to be answered by Yes or No.}
 \usage{
-match_pattern(question, pattern, post = NULL, field_name = "")
+match_pattern(
+  question,
+  pattern,
+  post = NULL,
+  field_name = "",
+  prompt = "Enter your answer:"
+)
 }
 \arguments{
 \item{question}{The question to be asked.}
@@ -14,6 +20,8 @@ match_pattern(question, pattern, post = NULL, field_name = "")
 \item{post}{Post processing.}
 
 \item{field_name}{Name of the field (optional).}
+
+\item{prompt}{the string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
 }
 \value{
 answer validated.

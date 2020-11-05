@@ -4,12 +4,14 @@
 \alias{yes_or_no}
 \title{A binary question to be answered by Yes or No.}
 \usage{
-yes_or_no(question, field_name = "")
+yes_or_no(question, field_name = "", prompt = "Enter [Y]es or [N]o: ")
 }
 \arguments{
 \item{question}{The question to be asked.}
 
 \item{field_name}{Name of the field (optional).}
+
+\item{prompt}{the string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
 }
 \value{
 \code{TRUE} for yes and \code{FALSE} for No.
