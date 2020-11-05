@@ -50,6 +50,8 @@ shake: no
 answer_3: oki8
 ```
 
+See `multi()` to repeat the form, e.g `multi(myform, 2)`.
+
 
 # Meta
 
