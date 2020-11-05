@@ -10,7 +10,7 @@ join <- function(x, y) {
   stopifnot(class(x) %in% c("form_partial", "form"))
   stopifnot(class(y) %in% c("form_partial", "form"))
   
-  structure(function() {
+  structure(function(n = 1) {
     r1 <- x()
     r2 <- y()
     if (class(x) == "form" | class(y) == "form") {
@@ -19,10 +19,8 @@ join <- function(x, y) {
       out <- list(r1, r2)
     }
     
-    if (class(x) == "form_partial") 
-      names(out)[1] <- attributes(x)$field_name
-    if (class(y) == "form_partial") 
-      names(out)[length(out)] <- attributes(y)$field_name
+    out <- name_field(out, x, 1)
+    out <- name_field(out, y, length(out))
             
     structure(out, class = "form_answers")
   }, class = "form")
@@ -32,3 +30,14 @@ join <- function(x, y) {
 #' @describeIn join join operator.
 #' @export
 '%+%' <- function(x, y) join(x, y)
+
+
+# 
+name_field <- function(out, x, i) {
+  if (class(x) == "form_partial") {
+    if (attributes(x)$field_name == "") {
+      names(out)[i] <- glue("answer_{i}")
+    } else names(out)[i] <- attributes(x)$field_name
+  } 
+  out 
+}
