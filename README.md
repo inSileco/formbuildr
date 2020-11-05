@@ -6,34 +6,35 @@ An R :package: to build forms with the command line interface.
 
 
 ```R
-R> q1 <- one_among("Fruits?", c("Apple", "Pear"), "fruit") 
+R> q1 <- one_among("Fruits?", c("Apple", "Pear"), "fruit")
 R> q2 <- yes_or_no("Be or not to be?", "shake")
-R> q3 <- yes_or_no("R u doing ok?")
+R> q3 <- match_pattern("3 letters + 1 digit", "^[A-Za-z]{3}[0-9]$")
 R> myform <- q1 %+% q2 %+% q3
+R> res <- myform()   
 ❓ Fruits?
 ℹ Multiple choices
-1 :  Apple 
-2 :  Pear 
-Enter your choice: 1 
+1 :  Apple
+2 :  Pear
+Enter your choice: 1
 ✔ validated!
 ❓ Be or not to be?
-[Y]es or [No]: no 
+[Y]es or [N]o: no 
 ✔ validated!
-❓ R u doing ok?
-[Y]es or [No]: grrr   
+❓ 3 letters + 1 digit
+Enter your answer: jjjj
 ⚠ Validation failed, try again!
-[Y]es or [No]: Y      
+Enter your answer: oki7
 ✔ validated!
 
-R> res
+R> res 
 $fruit
-[1] 1
+[1] "Apple"
 
 $shake
-[1] "NO"
+[1] FALSE
 
-[[3]]
-[1] "Y"
+$answer_3
+[1] "oki7"
 
 attr(,"class")
 [1] "form_answers"
@@ -41,16 +42,16 @@ attr(,"class")
 R> export_answer(res, "answers.yaml")   
 ```
 
-the last line returns `answers.yaml` with the following content: 
+the last line returns `answers.yaml` with the following content:
 
 ```yaml
-fruit: 1.0
-shake: 'NO'
-'': 'Y'
+fruit: Apple
+shake: no
+answer_3: oki7
 ```
 
 
-# Meta 
+# Meta
 
 * Please report any issues or bugs: https://github.com/inSileco/formbuildr/issues
 * License: GPL-3

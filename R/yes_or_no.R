@@ -7,7 +7,7 @@
 #' @export
 
 yes_or_no <- function(question, field_name = "") {  
-  generate_form_unit(question = question, msg = "[Y]es or [No]: ", 
+  generate_form_unit(question = question, msg = "[Y]es or [N]o: ", 
     validate = "^[NY]$|^YES$|^NO$", pre = toupper, 
-    post = function (x) grepl("^Y", x), field_name = field_name) 
+    post = function(x) grepl("^Y", x), field_name = field_name) 
 }

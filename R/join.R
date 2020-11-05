@@ -10,7 +10,7 @@ join <- function(x, y) {
   stopifnot(class(x) %in% c("form_partial", "form"))
   stopifnot(class(y) %in% c("form_partial", "form"))
   
-  structure(function(n = 1) {
+  structure(function() {
     r1 <- x()
     r2 <- y()
     if (class(x) == "form" | class(y) == "form") {

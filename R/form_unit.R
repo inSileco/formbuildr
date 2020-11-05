@@ -29,12 +29,10 @@ generate_form_unit <- function(msg, question = NULL, choices = NULL, validate = 
       not_valid()
       tmp <- readline(msg)
     }  
-    
     valid()
     
-    if (is.function(post)) post(tmp) else tmp
-    
-    tmp
+    if (is.function(post)) out <- post(tmp) else out <- tmp
+    out
   } 
   
   structure(out, class = "form_partial", field_name = field_name)
@@ -63,13 +61,13 @@ generate_form_unit_choices <- function(question, choices, output = "choice", fie
       tmp <- readline("Enter your choice: ")
     }  
     valid()
+    
     tmp <- as.numeric(tmp)
     if (output == "choice") {
-      choices[tmp]
-    } else tmp
+      out <- choices[tmp]
+    } else out <- tmp
     
-    tmp
-    
+    out
   } 
   
   structure(out, class = "form_partial",  field_name = field_name)

@@ -1,5 +1,6 @@
 #' @importFrom crayon blue red green yellow
 #' @importFrom cli style_bold style_underline
+#' @importFrom glue glue
 
 msgInfo <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$info, ...)
