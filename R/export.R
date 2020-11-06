@@ -3,7 +3,7 @@
 #' @param x object of class `form_answers` or `form`. 
 #' @param file file name.
 #' @param format So far only YAML is available.
-#' 
+#'
 #' @export
 
 export_answer <- function(x, file, format = "yaml") {

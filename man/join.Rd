@@ -5,11 +5,13 @@
 \alias{\%+\%}
 \title{objects of class \code{form_partial} or \code{form}}
 \usage{
-join(x, y)
+join(...)
 
 x \%+\% y
 }
 \arguments{
+\item{...}{object(s) of class \code{form_partial} or \code{form}.}
+
 \item{x, y}{objects of class \code{form_partial} or \code{form}.}
 }
 \value{

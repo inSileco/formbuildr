@@ -12,8 +12,14 @@
 match_pattern <- function(question, pattern, post = NULL, field_name = "",
   prompt = "Enter your answer:") {  
   
-  generate_form_pattern(question = question, prompt = prompt, 
-    pattern = pattern, pre = NULL, post = post, field_name = field_name) 
+  generate_form_pattern(
+    question = question, 
+    prompt = prompt, 
+    pattern = pattern, 
+    pre = NULL, 
+    post = post, 
+    field_name = field_name
+  ) 
 
 }
 

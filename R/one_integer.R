@@ -9,7 +9,7 @@
 #' @return Return the choice selected either as the choice value or its identifier (an integer).
 #' @export
 
-one_integer <- function(question, prompt = NULL, field_name = "") {
+one_integer <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (an integer): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+$", pre = NULL, post = as.integer, field_name = field_name)
@@ -17,7 +17,7 @@ one_integer <- function(question, prompt = NULL, field_name = "") {
 
 #' @describeIn one_integer a numeric. 
 #' @export
-one_numeric <- function(question, prompt = NULL, field_name = "") {
+one_numeric <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (a numeric): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+\\.?[0-9]*$|^[0-9]*\\.?[0-9]+$", pre = NULL, 
@@ -27,7 +27,7 @@ one_numeric <- function(question, prompt = NULL, field_name = "") {
 
 #' @describeIn one_integer a word.
 #' @export
-one_word <- function(question, prompt = NULL, field_name = "") {
+one_word <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (one word): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[A-Za-z\\-]+$", pre = NULL, post = NULL, 
@@ -37,7 +37,7 @@ one_word <- function(question, prompt = NULL, field_name = "") {
 
 #' @describeIn one_integer a text.
 #' @export
-one_text <- function(question, max = NULL, prompt = NULL, field_name = "") {
+one_text <- function(question, field_name = "", max = NULL, prompt = NULL) {
   
   if (is.null(prompt)) {
     if (is.null(max)) {
@@ -67,12 +67,13 @@ one_text <- function(question, max = NULL, prompt = NULL, field_name = "") {
 
 #' @describeIn one_integer a date.
 #' @export
-one_date <- function(question, format = "%Y-%m-%d", prompt = NULL, 
-  field_name = "") {
+one_date <- function(question, field_name = "", format = "%Y-%m-%d", 
+  prompt = NULL) {
     
   if (is.null(prompt)) 
     prompt <- paste0("Enter your answer (a date ", format, "): ")
-  f_pre <- function(x) as.Date(x, format = format) 
+  # as.list needed otherwise will be coerced to numeric
+  f_pre <- function(x) as.character(as.Date.character(x, format = format))
   f_val <- function(x) !is.na(x)
   
   generate_form(question = question, prompt = prompt, 

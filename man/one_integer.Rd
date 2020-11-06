@@ -8,22 +8,22 @@
 \alias{one_date}
 \title{A binary question to be answered by Yes or No.}
 \usage{
-one_integer(question, prompt = NULL, field_name = "")
+one_integer(question, field_name = "", prompt = NULL)
 
-one_numeric(question, prompt = NULL, field_name = "")
+one_numeric(question, field_name = "", prompt = NULL)
 
-one_word(question, prompt = NULL, field_name = "")
+one_word(question, field_name = "", prompt = NULL)
 
-one_text(question, max = NULL, prompt = NULL, field_name = "")
+one_text(question, field_name = "", max = NULL, prompt = NULL)
 
-one_date(question, format = "\%Y-\%m-\%d", prompt = NULL, field_name = "")
+one_date(question, field_name = "", format = "\%Y-\%m-\%d", prompt = NULL)
 }
 \arguments{
 \item{question}{The question to be asked.}
 
-\item{prompt}{the string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
-
 \item{field_name}{Name of the field (optional).}
+
+\item{prompt}{the string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
 
 \item{max}{maximum of characters (ignored if \code{NULL}).}
 
