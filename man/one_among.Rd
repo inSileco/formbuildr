@@ -4,7 +4,7 @@
 \alias{one_among}
 \title{A binary question to be answered by Yes or No.}
 \usage{
-one_among(question, choices, field_name = NULL, output = "choice")
+one_among(question, choices, field_name = "", output = "choice", ...)
 }
 \arguments{
 \item{question}{The question to be asked.}
@@ -14,6 +14,8 @@ one_among(question, choices, field_name = NULL, output = "choice")
 \item{field_name}{Name of the field (optional).}
 
 \item{output}{Either "choice" or "id".}
+
+\item{...}{further arguments passed to generate_form_choices().}
 }
 \value{
 Return the choice selected either as the choice value or its identifier (an integer).

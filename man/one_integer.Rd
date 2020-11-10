@@ -6,6 +6,8 @@
 \alias{one_word}
 \alias{one_text}
 \alias{one_date}
+\alias{one_yorn}
+\alias{one_boolean}
 \title{A binary question to be answered by Yes or No.}
 \usage{
 one_integer(question, field_name = "", prompt = NULL)
@@ -14,9 +16,18 @@ one_numeric(question, field_name = "", prompt = NULL)
 
 one_word(question, field_name = "", prompt = NULL)
 
-one_text(question, field_name = "", max = NULL, prompt = NULL)
+one_text(question, field_name = "", max = NULL, prompt = NULL, ...)
 
-one_date(question, field_name = "", format = "\%Y-\%m-\%d", prompt = NULL)
+one_date(question, field_name = "", format = "\%Y-\%m-\%d", prompt = NULL, ...)
+
+one_yorn(question, field_name = "", prompt = "Enter [Y]es or [N]o: ", ...)
+
+one_boolean(
+  question,
+  field_name = "",
+  prompt = "Enter [T]RUE or [F]ALSE: ",
+  ...
+)
 }
 \arguments{
 \item{question}{The question to be asked.}
@@ -26,6 +37,8 @@ one_date(question, field_name = "", format = "\%Y-\%m-\%d", prompt = NULL)
 \item{prompt}{the string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
 
 \item{max}{maximum of characters (ignored if \code{NULL}).}
+
+\item{...}{further argument.}
 
 \item{format}{date format.}
 }
@@ -44,5 +57,9 @@ A binary question to be answered by Yes or No.
 \item \code{one_text}: a text.
 
 \item \code{one_date}: a date.
+
+\item \code{one_yorn}: \code{TRUE} for yes and \code{FALSE} for no.
+
+\item \code{one_boolean}: one boolean/logical (i.e. \code{TRUE} or \code{FALSE}).
 }}
 

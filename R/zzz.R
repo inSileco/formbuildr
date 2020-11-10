@@ -1,6 +1,12 @@
 #' @importFrom crayon blue red green yellow
 #' @importFrom cli style_bold style_underline
 #' @importFrom glue glue
+#' @keywords internal 
+
+NULL
+
+
+# Message functions 
 
 msgInfo <- function(..., appendLF = TRUE) {
   txt <- paste(cli::symbol$info, ...)
@@ -34,5 +40,15 @@ msgQuestion <- function(..., appendLF = TRUE) {
 }
 
 
+
 valid <- function() msgSuccess('validated!')
+
 not_valid <- function() msgWarning('Validation failed, try again!')
+
+get_confirmed <- function() {
+  msgWarning('Confirmed?')
+  x <- readline("[Y]es or [N]o: ")
+  grepl("^Y$|^YES$", toupper(x))
+}
+
+not_confirmed <- function() msgWarning('Not confirmed!')

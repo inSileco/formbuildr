@@ -1,10 +1,13 @@
-#' @keywords internal 
 
 
-generate_form <- function(prompt = "", question = NULL,
-  choices = NULL, validate = NULL, pre = NULL, post = NULL, field_name = "") {
+generate_form <- function(prompt = "", question = NULL, choices = NULL,
+  validate = NULL, confirm = FALSE, pre = NULL, post = NULL, field_name = "") {
       
-    out <- function() {
+    out <- function(x = NULL) {
+      
+      if (!is.null(x)) {
+        return(validate(x))
+      }
           
       if (!is.null(question)) {
         msgQuestion(question)
@@ -15,15 +18,28 @@ generate_form <- function(prompt = "", question = NULL,
         list_choices(choices)
       }
       
-      tmp <- readline(prompt)
-      if (is.function(pre)) tmp <- pre(tmp)
-      
+      # validate
       if (is.function(validate)) {
-        while (!validate(tmp)) {
-          not_valid()
+        ok <- vld <- FALSE
+        while (!vld | !ok) {
           tmp <- readline(prompt)
-          if (is.function(pre)) tmp <- pre(tmp)
-        }  
+          vld <- validate(tmp)
+          if (vld) {
+            # confirm 
+            if (confirm) {
+              ok <- get_confirmed()
+              if (ok) {
+                vld <- TRUE
+                if (is.function(pre)) tmp <- pre(tmp)
+              } else {
+                not_confirmed()
+              }
+            } else {
+              ok <- vld <- TRUE
+              if (is.function(pre)) tmp <- pre(tmp)
+            }
+          } else not_valid()
+        }
         valid()
       } else {
         if (!is.null(validate)) {
@@ -41,17 +57,16 @@ generate_form <- function(prompt = "", question = NULL,
 
 
 generate_form_pattern <- function(prompt = "", question = NULL, choices = NULL, 
-  pattern = "*", pre = NULL, post = NULL, field_name = "") {
+  pattern = "*", confirm = FALSE, pre = NULL, post = NULL, field_name = "") {
   vf <- function(x) grepl(pattern, x)
-  generate_form(prompt, question, choices, vf, pre, post, field_name)
+  generate_form(prompt, question, choices, vf, confirm, pre, post, field_name)
 }
 
 
 generate_form_choices <- function(prompt = "", question = NULL, choices, 
-  pre = NULL, post = NULL, field_name = "") {
-  
+  confirm = FALSE, pre = NULL, post = NULL, field_name = "") {
   vf <- function(x) return(x %in% as.character(seq_along(choices)))
-  generate_form(prompt, question, choices, vf, pre, post, field_name)
+  generate_form(prompt, question, choices, vf, confirm, pre, post, field_name)
 }
 
 
