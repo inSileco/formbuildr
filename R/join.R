@@ -44,7 +44,9 @@ join_pair <- function(x, y) {
   stopifnot(class(x) %in% c("form_partial", "form"))
   stopifnot(class(y) %in% c("form_partial", "form"))
   
-  structure(function() {
+  structure(function(...) {
+    # so far arguments are not used
+    arg <- list(...)
     r1 <- x()
     r2 <- y()
     if (class(x) == "form" | class(y) == "form") {

@@ -18,7 +18,13 @@ generate_form <- function(prompt = "", question = NULL, choices = NULL,
     out <- function(x = NULL) {
       
       if (!is.null(x)) {
-        return(validate(x))
+        if (is.function(pre)) x <- pre(x)
+        if (is.function(validate)) {
+          if (validate(x)) {
+            if (is.function(post)) x <- post(x)
+            return(x)
+          } else return(NA)
+        } else return(x)
       }
           
       if (!is.null(question)) {
