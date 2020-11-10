@@ -4,7 +4,7 @@
 #' @param choices A vector of choices. 
 #' @param output Either "choice" or "id".
 #' @param field_name Name of the field (optional).
-#' @param ... further arguments passed to generate_form_choices().
+#' @param ... further arguments to be passed to [generate_form_choices()].
 #' 
 #' @return Return the choice selected either as the choice value or its identifier (an integer).
 #' @export
@@ -24,6 +24,7 @@ fob_among <- function(question, choices, field_name = "", output = "choice",
     question = question,
     choices = choices,
     field_name = field_name,
+    post = postf,
     ...
   ) 
 

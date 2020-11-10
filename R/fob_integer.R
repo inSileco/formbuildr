@@ -5,7 +5,7 @@
 #' @param field_name Name of the field (optional).
 #' @param max maximum of characters (ignored if `NULL`).
 #' @param format date format. 
-#' @param ... further argument.  
+#' @param ... further arguments to be passed to [generate_form_pattern()].
 #' 
 #' @return Return the choice selected either as the choice value or its identifier (an integer).
 #' @export
