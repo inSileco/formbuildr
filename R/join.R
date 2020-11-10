@@ -10,10 +10,10 @@ join <- function(...) {
   tmp <- list(...)
   n <- length(tmp)
   if (n == 1) {
-    out <- to_form(tmp[[1]])
+    out <- to_form(tmp[[1L]])
   } else {
     if (n > 1) {
-      out <- join_pair(tmp[[1]], tmp[[2]])
+      out <- join_pair(tmp[[1L]], tmp[[2L]])
       if (n > 2) {
         for (i in seq(3, n)) {
           out <- join_pair(out, tmp[[i]])

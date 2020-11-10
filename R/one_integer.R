@@ -10,15 +10,15 @@
 #' @return Return the choice selected either as the choice value or its identifier (an integer).
 #' @export
 
-one_integer <- function(question, field_name = "", prompt = NULL) {
+fob_integer <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (an integer): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+$", confirm = FALSE, pre = NULL, post = as.integer, field_name = field_name)
 } 
 
-#' @describeIn one_integer a numeric. 
+#' @describeIn fob_integer a numeric. 
 #' @export
-one_numeric <- function(question, field_name = "", prompt = NULL) {
+fob_numeric <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (a numeric): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+\\.?[0-9]*$|^[0-9]*\\.?[0-9]+$", confirm = FALSE,
@@ -26,9 +26,9 @@ one_numeric <- function(question, field_name = "", prompt = NULL) {
 } 
 
 
-#' @describeIn one_integer a word.
+#' @describeIn fob_integer a word.
 #' @export
-one_word <- function(question, field_name = "", prompt = NULL) {
+fob_word <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (one word): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[A-Za-z\\-]+$", pre = NULL, post = NULL, confirm = FALSE,
@@ -36,9 +36,9 @@ one_word <- function(question, field_name = "", prompt = NULL) {
 } 
 
 
-#' @describeIn one_integer a text.
+#' @describeIn fob_integer a text.
 #' @export
-one_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) {
+fob_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) {
   
   if (is.null(prompt)) {
     if (is.null(max)) {
@@ -66,9 +66,9 @@ one_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) 
 } 
 
 
-#' @describeIn one_integer a date.
+#' @describeIn fob_integer a date.
 #' @export
-one_date <- function(question, field_name = "", format = "%Y-%m-%d", 
+fob_date <- function(question, field_name = "", format = "%Y-%m-%d", 
   prompt = NULL, ...) {
     
   if (is.null(prompt)) 
@@ -82,9 +82,9 @@ one_date <- function(question, field_name = "", format = "%Y-%m-%d",
 }
 
 
-#' @describeIn one_integer `TRUE` for yes and `FALSE` for no.
+#' @describeIn fob_integer `TRUE` for yes and `FALSE` for no.
 
-one_yorn <- function(question, field_name = "", 
+fob_yorn <- function(question, field_name = "", 
   prompt = "Enter [Y]es or [N]o: ", ...) { 
   
   f_post <- function(x) grepl("^Y", x)
@@ -102,9 +102,9 @@ one_yorn <- function(question, field_name = "",
 }
 
 
-#' @describeIn one_integer one boolean/logical (i.e. `TRUE` or `FALSE`).
+#' @describeIn fob_integer one boolean/logical (i.e. `TRUE` or `FALSE`).
 
-one_boolean <- function(question, field_name = "", 
+fob_boolean <- function(question, field_name = "", 
   prompt = "Enter [T]RUE or [F]ALSE: ", ...) { 
   
   f_post <- function(x) grepl("^T", x)

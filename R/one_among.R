@@ -9,7 +9,7 @@
 #' @return Return the choice selected either as the choice value or its identifier (an integer).
 #' @export
 
-one_among <- function(question, choices, field_name = "", output = "choice", 
+fob_among <- function(question, choices, field_name = "", output = "choice", 
   ...) {
   
   output <- match.arg(output, c("choice", "id"))
