@@ -3,75 +3,57 @@
 #' @param ... object(s) of class `form_partial` or `form`. 
 #' @param x,y objects of class `form_partial` or `form`. 
 #' 
-#' @return `TRUE` for yes and `FALSE` for No.
+#' @return `TRUE` for yes and `FALSE` for no.
 #' @export
 
 join <- function(...) {
-  tmp <- list(...)
-  n <- length(tmp)
-  if (n == 1) {
-    out <- to_form(tmp[[1L]])
-  } else {
-    if (n > 1) {
-      out <- join_pair(tmp[[1L]], tmp[[2L]])
-      if (n > 2) {
-        for (i in seq(3, n)) {
-          out <- join_pair(out, tmp[[i]])
-        }
-      }
-    }
+  funs <- list(...)
+  n <- length(funs)
+  cls <- unlist(lapply(funs, function(x) class(x)))
+  if (!all(cls %in% c("form_partial", "form"))) {
+    stop("only objects of class 'form_partial' and 'form' can be combined")
   }
-  out
-}
+  # get names 
+  nms <- unlist(mapply(name_field, x = funs, i = seq_len(n)))
+  # combine fun
+  funs <- do.call(c, lapply(funs, list_funs))
+  
+  structure(function(...) {
+    args <- list(...)
+    # so far arguments are not used
+    if (length(args)) {
+        stopifnot(length(funs) == length(args))
+        out <- mapply(function(x, y) x(y), x = funs, y = args)
+    } else out <- lapply(funs, function(x) x())
+    names(out) <- nms 
+    structure(out, class = "form_answers")
+  }, class = c("form"), field_name = nms, funs = funs)
 
+}
 
 #' @describeIn join join operator.
 #' @export
-'%+%' <- function(x, y) join_pair(x, y)
-
-to_form <- function(x) {
-  stopifnot(class(x) == "form_partial")
-  
-  structure(function() {
-    r1 <- x()
-    out <- name_field(list(r1), x, 1)
-    structure(out, class = "form_answers")
-  }, class = "form")
-  
-}
-
-join_pair <- function(x, y) {
-  stopifnot(class(x) %in% c("form_partial", "form"))
-  stopifnot(class(y) %in% c("form_partial", "form"))
-  
-  structure(function(...) {
-    # so far arguments are not used
-    arg <- list(...)
-    r1 <- x()
-    r2 <- y()
-    if (class(x) == "form" | class(y) == "form") {
-      out <- c(r1, r2)
-    } else {
-      out <- list(r1, r2)
-    }
-    
-    out <- name_field(out, x, 1)
-    out <- name_field(out, y, length(out))
-            
-    structure(out, class = "form_answers")
-  }, class = "form")
-  
-}
+'%+%' <- function(x, y) join(x, y)
 
 
-
-
-# helpers 
-name_field <- function(out, x, i) {
+# helpers
+name_field <- function(x, i) {
   if (class(x) == "form_partial") {
     if (attributes(x)$field_name == "") {
-      names(out)[i] <- glue("answer_{i}")
-    } else names(out)[i] <- attributes(x)$field_name
-  } 
-  out 
+      glue("answer_{i}")
+    } else attributes(x)$field_name
+  } else {
+    attributes(x)$field_name
+  }
 }
+
+# use attribute is class is `form`
+list_funs <- function(x) {
+  if (class(x) == "form_partial") {
+    x
+  } else {
+    attributes(x)$funs
+  }
+}
+ 
+ 

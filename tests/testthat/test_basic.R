@@ -1,4 +1,4 @@
-context("NULL")
+context("Core funcitonalities")
 
 q1 <- fob_among("Fruits?", c("Apple", "Pear"), "fruit", confirm = TRUE)
 q2 <- fob_yorn("Be or not to be", "shake")

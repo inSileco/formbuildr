@@ -15,7 +15,7 @@ x \%+\% y
 \item{x, y}{objects of class \code{form_partial} or \code{form}.}
 }
 \value{
-\code{TRUE} for yes and \code{FALSE} for No.
+\code{TRUE} for yes and \code{FALSE} for no.
 }
 \description{
 objects of class \code{form_partial} or \code{form}
