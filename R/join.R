@@ -23,7 +23,7 @@ join <- function(...) {
     # so far arguments are not used
     if (length(args)) {
         stopifnot(length(funs) == length(args))
-        out <- mapply(function(x, y) x(y), x = funs, y = args)
+        out <- mapply(function(x, y) x(y), x = funs, y = args, SIMPLIFY = FALSE)
     } else out <- lapply(funs, function(x) x())
     names(out) <- nms 
     structure(out, class = "form_answers")

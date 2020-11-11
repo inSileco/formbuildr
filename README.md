@@ -5,6 +5,8 @@
 An R :package: to readily build forms with the command line interface.
 
 
+## Simple creation of forms 
+
 ```R
 R> q1 <- fob_among("Fruits?", c("Apple", "Pear"), "fruit", confirm = TRUE)
 R> q2 <- fob_yorn("Be or not to be", "shake")
@@ -47,11 +49,30 @@ $answer_4
 
 attr(,"class")
 [1] "form_answers"
+```
 
+Alternatively, you can use `join(q1, q2, q3, q4)` to create the same form.
+Note that forms can also be combined, just as questions, so what follows 
+
+```R
+R> q5 <- fob_integer("How many?")
+R> myform2 <- myform %+% q5
+```
+
+adds one question to the previous form, the answer to which should be an integer. 
+Also, see `multi()` to repeat the form, e.g `multi(myform, 2)`.
+
+
+
+## Exportation of the results 
+
+So far, results are returned as a list and can be exported as "YAML" using `export_answer()`. For instance the following
+
+```
 R> export_answer(res, "answers.yaml")   
 ```
 
-the last line returns `answers.yaml` with the following content:
+creates `answers.yaml` with the following content:
 
 ```yaml
 fruit: Apple
@@ -60,11 +81,57 @@ date: '2010-12-01'
 answer_4: lo1
 ```
 
-Alternatively, you can use `join(q1, q2, q3, q4)` to create the same form. Also,
-see `multi()` to repeat the form, e.g `multi(myform, 2)`.
+
+## Direct validation
+
+Once a form created it can be also used for direct validation, i.e. one can skip the interactive parts a check whether answers are correctly formatted: 
+
+```R 
+R> myform2(1, "Y", "2010-01-01", "ok1", 1)
+$fruit
+[1] "Apple"
+
+$shake
+[1] FALSE
+
+$date
+[1] "2010-01-01"
+
+$answer_2
+[1] "ok1"
+
+$answer_2
+[1] 1
+
+attr(,"class")
+[1] "form_answers"
+```
+
+Currently a `NA` is returned when the format is not correct 
+
+```R 
+R> myform2(1, "Y", "2010-01-01", "ok1", 1.2)
+$fruit
+[1] "Apple"
+
+$shake
+[1] FALSE
+
+$date
+[1] "2010-01-01"
+
+$answer_2
+[1] "ok1"
+
+$answer_2
+[1] NA
+
+attr(,"class")
+[1] "form_answers"
+```
 
 
-# Meta
+## Meta
 
 * Please report any issues or bugs: https://github.com/inSileco/formbuildr/issues
 * License: GPL-3
