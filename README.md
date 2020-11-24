@@ -1,5 +1,6 @@
 # formbuildr
 [![R-CMD-check](https://github.com/inSileco/formbuildr/workflows/R-CMD-check/badge.svg)](https://github.com/inSileco/formbuildr/actions?query=workflow%3AR-CMD-check)
+[![codecov](https://codecov.io/gh/inSileco/formbuildr/branch/master/graph/badge.svg)](https://codecov.io/gh/inSileco/formbuildr)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 An R :package: to readily build forms with the command line interface.
