@@ -41,7 +41,7 @@ fob_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) 
   } 
   
   generate_form_pattern(question = question, prompt = prompt, 
-    pattern = "^[[:graph:]]+$", post = f_post, 
+    pattern = ".*", post = f_post, 
     field_name = field_name, ...)
 } 
 
