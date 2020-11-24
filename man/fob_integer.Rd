@@ -3,9 +3,8 @@
 \name{fob_integer}
 \alias{fob_integer}
 \alias{fob_numeric}
-\alias{fob_word}
-\alias{fob_text}
 \alias{fob_date}
+\alias{fob_character}
 \alias{fob_yorn}
 \alias{fob_boolean}
 \title{A binary question to be answered by Yes or No.}
@@ -14,11 +13,9 @@ fob_integer(question, field_name = "", prompt = NULL)
 
 fob_numeric(question, field_name = "", prompt = NULL)
 
-fob_word(question, field_name = "", prompt = NULL)
-
-fob_text(question, field_name = "", max = NULL, prompt = NULL, ...)
-
 fob_date(question, field_name = "", format = "\%Y-\%m-\%d", prompt = NULL, ...)
+
+fob_character(question, field_name = "", prompt = NULL)
 
 fob_yorn(question, field_name = "", prompt = "Enter [Y]es or [N]o: ", ...)
 
@@ -36,11 +33,9 @@ fob_boolean(
 
 \item{prompt}{the string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
 
-\item{max}{maximum of characters (ignored if \code{NULL}).}
+\item{format}{date format.}
 
 \item{...}{further arguments to be passed to \code{\link[=generate_form_pattern]{generate_form_pattern()}}.}
-
-\item{format}{date format.}
 }
 \value{
 Return the choice selected either as the choice value or its identifier (an integer).
@@ -52,11 +47,9 @@ A binary question to be answered by Yes or No.
 \itemize{
 \item \code{fob_numeric}: a numeric.
 
-\item \code{fob_word}: a word.
-
-\item \code{fob_text}: a text.
-
 \item \code{fob_date}: a date.
+
+\item \code{fob_character}: a character.
 
 \item \code{fob_yorn}: \code{TRUE} for yes and \code{FALSE} for no.
 
