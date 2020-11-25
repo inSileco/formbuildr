@@ -92,7 +92,8 @@ generate_form_choices <- function(prompt = "", question = NULL, choices,
 list_choices <- function(x) {
   out <- seq_along(x)
   for (i in out) {
-    cat(i, ": ", x[i], "\n")
+    spc <- paste(rep(" ", nchar(max(out)) - nchar(i)), collapse = "")
+    cat(paste0(i, spc, ": ", x[i], "\n"))
   }
   invisible(0)
 }

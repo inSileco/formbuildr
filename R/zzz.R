@@ -40,7 +40,6 @@ msgQuestion <- function(..., appendLF = TRUE) {
 }
 
 
-
 valid <- function() msgSuccess('validated!')
 
 not_valid <- function() msgWarning('Validation failed, try again!')
@@ -53,9 +52,3 @@ get_confirmed <- function() {
 
 not_confirmed <- function() msgWarning('Not confirmed!')
 
-
-# 
-# month.name
-# months(ISOdate(2004,1:12,1))
-# weekdays(ISOdate(2004,1,5:11)) 
-# Sys.setlocale("LC_TIME"e,"fr_FR") ;format(ISOdate(2004,1:12,1), "%B")

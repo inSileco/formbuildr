@@ -29,3 +29,17 @@ fob_among <- function(question, choices, field_name = "", output = "choice",
   ) 
 
 }
+
+
+#' @describeIn fob_among One month.
+fob_month <- function(question, field_name = "", output = c("choice", "id"), ...) {
+  fob_among(question, months(ISOdate(2004, 1:12, 1)), field_name, output)
+}
+
+#' @describeIn fob_among One weekday.
+fob_weekday <- function(question, field_name = "", output = c("choice", "id"), ...) {
+  fob_among(question, weekdays(ISOdate(2004,1,5:11)), field_name, output)
+}
+
+# Sys.setlocale("LC_TIME"e,"fr_FR") ;format(ISOdate(2004,1:12,1), "%B")
+

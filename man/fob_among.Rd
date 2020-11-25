@@ -2,9 +2,15 @@
 % Please edit documentation in R/fob_among.R
 \name{fob_among}
 \alias{fob_among}
+\alias{fob_month}
+\alias{fob_weekday}
 \title{A binary question to be answered by Yes or No.}
 \usage{
 fob_among(question, choices, field_name = "", output = "choice", ...)
+
+fob_month(question, field_name = "", output = c("choice", "id"), ...)
+
+fob_weekday(question, field_name = "", output = c("choice", "id"), ...)
 }
 \arguments{
 \item{question}{The question to be asked.}
@@ -23,3 +29,10 @@ Return the choice selected either as the choice value or its identifier (an inte
 \description{
 A binary question to be answered by Yes or No.
 }
+\section{Functions}{
+\itemize{
+\item \code{fob_month}: One month.
+
+\item \code{fob_weekday}: One weekday.
+}}
+
