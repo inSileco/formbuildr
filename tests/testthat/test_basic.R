@@ -4,7 +4,7 @@ q1 <- fob_among("Fruits?", c("Apple", "Pear"), "fruit", confirm = TRUE)
 q2 <- fob_yorn("Be or not to be", "shake")
 q3 <- fob_date("When was that?", "date")
 q4 <- fob_pattern("2 letters + 1 digit", "^[A-Za-z]{2}[0-9]$")
-q5 <- fob_integer("How many?")
+q5 <- fob_int("How many?")
 myform <- q1 %+% q2 
 myform2 <- myform %+% q3
 # res <- myform()

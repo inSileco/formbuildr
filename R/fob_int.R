@@ -1,30 +1,30 @@
-#' A binary question to be answered by Yes or No.
-#' 
+#' Generate one question.
+#'
 #' @param question The question to be asked. 
-#' @param prompt the string printed when prompting the user for input (see [readline()]).
+#' @param prompt The string printed when prompting the user for input (see [readline()]).
 #' @param field_name Name of the field (optional).
-#' @param format date format. 
-#' @param ... further arguments to be passed to [generate_form_pattern()].
+#' @param format Date format. 
+#' @param ... Further arguments to be passed to [generate_form_pattern()].
 #' 
-#' @return Return the choice selected either as the choice value or its identifier (an integer).
+#' @return one integer.
 #' @export
 
-fob_integer <- function(question, field_name = "", prompt = NULL) {
+fob_int <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (an integer): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+$", confirm = FALSE, pre = NULL, post = as.integer, field_name = field_name)
 } 
 
-#' @describeIn fob_integer a numeric. 
+#' @describeIn fob_int one numeric. 
 #' @export
-fob_numeric <- function(question, field_name = "", prompt = NULL) {
+fob_num <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (a numeric): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+\\.?[0-9]*$|^[0-9]*\\.?[0-9]+$", confirm = FALSE,
     pre = NULL, post = as.numeric, field_name = field_name)
 } 
 
-#' @describeIn fob_integer a date.
+#' @describeIn fob_int one date.
 #' @export
 fob_date <- function(question, field_name = "", format = "%Y-%m-%d", 
   prompt = NULL, ...) {
@@ -39,16 +39,16 @@ fob_date <- function(question, field_name = "", format = "%Y-%m-%d",
     pre = f_pre, field_name = field_name, ...)
 }
 
-#' @describeIn fob_integer a character. 
+#' @describeIn fob_int a character. 
 #' @export
-fob_character <- function(question, field_name = "", prompt = NULL) {
+fob_char <- function(question, field_name = "", prompt = NULL) {
   if (is.null(prompt)) prompt <- "Enter your answer (a numeric): "
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "*.", confirm = FALSE,
     pre = NULL, post = as.numeric, field_name = field_name)
 } 
 
-#' @describeIn fob_integer `TRUE` for yes and `FALSE` for no.
+#' @describeIn fob_int `TRUE` for yes and `FALSE` for no.
 
 fob_yorn <- function(question, field_name = "", 
   prompt = "Enter [Y]es or [N]o: ", ...) { 
@@ -67,9 +67,9 @@ fob_yorn <- function(question, field_name = "",
 
 }
 
-#' @describeIn fob_integer one boolean/logical (i.e. `TRUE` or `FALSE`).
+#' @describeIn fob_int one boolean/logical (i.e. `TRUE` or `FALSE`).
 
-fob_boolean <- function(question, field_name = "", 
+fob_bool <- function(question, field_name = "", 
   prompt = "Enter [T]RUE or [F]ALSE: ", ...) { 
   
   f_post <- function(x) grepl("^T", x)

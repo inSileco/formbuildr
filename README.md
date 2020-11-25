@@ -56,7 +56,7 @@ Alternatively, you can use `join(q1, q2, q3, q4)` to create the same form.
 Note that forms can also be combined, just as questions, so what follows 
 
 ```R
-R> q5 <- fob_integer("How many?")
+R> q5 <- fob_int("How many?")
 R> myform2 <- myform %+% q5
 ```
 
