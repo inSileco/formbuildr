@@ -9,16 +9,18 @@
 #' @param pre A function for pre processing.
 #' @param post A function for post processing. 
 #' @param pattern pattern to be matched. 
+#' @param extra_space extra space in prompt line.
 #'
 #' @export
 
 generate_form <- function(prompt = "", question = NULL, choices = NULL,
-  validate = NULL, confirm = FALSE, pre = NULL, post = NULL, field_name = "") {
+  validate = NULL, confirm = FALSE, pre = NULL, post = NULL, field_name = "", extra_space = " ") {
       
     out <- function(x = NULL) {
       
       if (!is.null(x)) {
         if (is.function(pre)) x <- pre(x)
+
         if (is.function(validate)) {
           if (validate(x)) {
             if (is.function(post)) x <- post(x)
@@ -40,7 +42,8 @@ generate_form <- function(prompt = "", question = NULL, choices = NULL,
       if (is.function(validate)) {
         ok <- vld <- FALSE
         while (!vld | !ok) {
-          tmp <- readline(prompt)
+          tmp <- readline(paste0(prompt, extra_space))
+          if (is.function(pre)) tmp <- pre(tmp)
           vld <- validate(tmp)
           if (vld) {
             # confirm 
@@ -49,9 +52,7 @@ generate_form <- function(prompt = "", question = NULL, choices = NULL,
               if (ok) {
                 vld <- TRUE
                 if (is.function(pre)) tmp <- pre(tmp)
-              } else {
-                not_confirmed()
-              }
+              } else not_confirmed()
             } else {
               ok <- vld <- TRUE
               if (is.function(pre)) tmp <- pre(tmp)

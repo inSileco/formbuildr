@@ -1,0 +1,2 @@
+q: How many apples?; t: int ; q: apples; p: Enter here:;
+q: Today ?; t: date; f: pears;

@@ -32,7 +32,13 @@ fob_date <- function(question, field_name = "", format = "%Y-%m-%d",
   if (is.null(prompt)) 
     prompt <- paste0("Enter your answer (a date ", format, "): ")
   # as.list needed otherwise will be coerced to numeric
-  f_pre <- function(x) as.character(as.Date.character(x, format = format))
+  f_pre <- function(x) {
+    out <- as.Date.character(x, format = format)
+    if (!is.na(out)) {
+      as.character(out)
+    } else out
+  }
+
   f_val <- function(x) !is.na(x)
   
   generate_form(question = question, prompt = prompt, validate = f_val, 

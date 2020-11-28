@@ -33,11 +33,17 @@ msgWarning <- function(..., appendLF = TRUE) {
 }
 
 msgQuestion <- function(..., appendLF = TRUE) {
-  txt <- paste(cli::symbol$fancy_question_mark, ..., 
-      cli::symbol$fancy_question_mark)
+  txt <- paste(cli::symbol$fancy_question_mark, ...)
   message(txt, appendLF = appendLF)
   invisible(txt)
 }
+
+msgSection <- function(..., appendLF = TRUE) {
+  txt <- paste(cli::symbol$menu, ...)
+  message(blue(txt), appendLF = appendLF)
+  invisible(txt)
+}
+
 
 
 valid <- function() msgSuccess('validated!')

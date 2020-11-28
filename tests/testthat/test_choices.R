@@ -1,6 +1,5 @@
 context("Choices")
 
-
 test_that("Month", {
   q1 <- fob_month("")
   q2 <- fob_month("", output = "id")

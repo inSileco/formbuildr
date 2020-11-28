@@ -14,7 +14,8 @@ generate_form(
   confirm = FALSE,
   pre = NULL,
   post = NULL,
-  field_name = ""
+  field_name = "",
+  extra_space = " "
 )
 
 generate_form_pattern(
@@ -54,6 +55,8 @@ generate_form_choices(
 \item{post}{A function for post processing.}
 
 \item{field_name}{Name of the field (optional).}
+
+\item{extra_space}{extra space in prompt line.}
 
 \item{pattern}{pattern to be matched.}
 }
