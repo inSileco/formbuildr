@@ -14,7 +14,8 @@ R> q2 <- fob_yorn("Be or not to be", "shake")
 R> s1 <- fob_section("Next part")
 R> q3 <- fob_date("When was that?", "date")
 R> q4 <- fob_pattern("2 letters + 1 digit", "^[A-Za-z]{2}[0-9]$")
-R> myform <- q1 %+% q2 %+% s1 %+% q3 %+% q4
+R> f1 <- fob_output(function(fruit, date, ...) paste0(date, ": I ate one", fruit))
+R> myform <- q1 %+% q2 %+% s1 %+% q3 %+% q4 %+% f1
 R> res <- myform()   
 ❓ Fruits?
 ℹ Multiple choices:
@@ -72,7 +73,7 @@ Also, see `multi()` to repeat the form, e.g `multi(myform, 2)`.
 See `form_from_file()`.
 
 
-## Exportation of the results 
+## Exporting results 
 
 So far, results are returned as a list and can be exported as "YAML" using `export_answer()`. For instance the following
 

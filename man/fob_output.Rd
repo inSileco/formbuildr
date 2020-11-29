@@ -4,12 +4,14 @@
 \alias{fob_output}
 \title{Add an output.}
 \usage{
-fob_output(FUN, ...)
+fob_output(FUN, field_name = NULL, ...)
 }
 \arguments{
 \item{FUN}{a function a character string that will be displayed.}
 
-\item{args}{arguments.}
+\item{field_name}{field_name.}
+
+\item{...}{arguments passed to \code{FUN}.}
 }
 \value{
 An object of class \code{output}.

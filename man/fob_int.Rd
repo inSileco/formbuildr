@@ -17,9 +17,9 @@ fob_date(question, field_name = "", format = "\%Y-\%m-\%d", prompt = NULL, ...)
 
 fob_char(question, field_name = "", prompt = NULL)
 
-fob_yorn(question, field_name = "", prompt = "Enter [Y]es or [N]o: ", ...)
+fob_yorn(question, field_name = "", prompt = "Enter [Y]es or [N]o:", ...)
 
-fob_bool(question, field_name = "", prompt = "Enter [T]RUE or [F]ALSE: ", ...)
+fob_bool(question, field_name = "", prompt = "Enter [T]RUE or [F]ALSE:", ...)
 }
 \arguments{
 \item{question}{The question to be asked.}

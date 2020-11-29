@@ -58,3 +58,9 @@ get_confirmed <- function() {
 
 not_confirmed <- function() msgWarning('Not confirmed!')
 
+
+commaAnd <- function(x, and = "and") {
+  if (length(x) > 1) {
+    paste(paste(x[-length(x)], collapse = ", "), and, x[length(x)])
+  } else x
+}
