@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • formbuildr</title>
+<title>Add an output. — fob_output • formbuildr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Add an output. — fob_output" />
+<meta property="og:description" content="Add an output." />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -105,108 +106,41 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Add an output.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/inSileco/formbuildr/blob/master/R/fob_output.R'><code>R/fob_output.R</code></a></small>
+    <div class="hidden name"><code>fob_output.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Add an output.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>fob_output</span><span class='op'>(</span><span class='va'>FUN</span>, field_name <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="export_answer.html">export_answer()</a></code> </p>
-        </td>
-        <td><p>Export answers.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fob_among.html">fob_among()</a></code> <code><a href="fob_among.html">fob_month()</a></code> <code><a href="fob_among.html">fob_weekday()</a></code> </p>
-        </td>
-        <td><p>A binary question to be answered by Yes or No.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fob_any.html">fob_any()</a></code> </p>
-        </td>
-        <td><p>Generate any kind of question.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fob_int.html">fob_int()</a></code> <code><a href="fob_int.html">fob_num()</a></code> <code><a href="fob_int.html">fob_date()</a></code> <code><a href="fob_int.html">fob_char()</a></code> <code><a href="fob_int.html">fob_yorn()</a></code> <code><a href="fob_int.html">fob_bool()</a></code> </p>
-        </td>
-        <td><p>Generate one question.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fob_output.html">fob_output()</a></code> </p>
-        </td>
-        <td><p>Add an output.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fob_pattern.html">fob_pattern()</a></code> </p>
-        </td>
-        <td><p>A binary question to be answered by Yes or No.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fob_section.html">fob_section()</a></code> </p>
-        </td>
-        <td><p>Add a section.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fob_word.html">fob_word()</a></code> <code><a href="fob_word.html">fob_text()</a></code> <code><a href="fob_word.html">fob_email()</a></code> </p>
-        </td>
-        <td><p>A binary question to be answered by Yes or No.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="form_from_file.html">form_from_file()</a></code> </p>
-        </td>
-        <td><p>Create a form from a connection.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="generate_form.html">generate_form()</a></code> <code><a href="generate_form.html">generate_form_pattern()</a></code> <code><a href="generate_form.html">generate_form_choices()</a></code> </p>
-        </td>
-        <td><p>Generate form</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="join.html">join()</a></code> <code><a href="join.html">`%+%`</a></code> </p>
-        </td>
-        <td><p>objects of class <code>form_partial</code> or <code>form</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="multi.html">multi()</a></code> </p>
-        </td>
-        <td><p>Repeat a form.</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>FUN</th>
+      <td><p>a function a character string that will be displayed.</p></td>
+    </tr>
+    <tr>
+      <th>field_name</th>
+      <td><p>field_name.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments passed to <code>FUN</code>.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An object of class <code>output</code>.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
