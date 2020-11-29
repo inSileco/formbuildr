@@ -70,7 +70,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#formbuildr" class="anchor"></a>formbuildr</h1></div>
 
-<p>An R <span class="emoji" data-emoji="package">📦</span> to readily build forms with the command line interface.</p>
+<p>An R <span class="emoji" data-emoji="package">📦</span> to quickly build forms with the command line interface.</p>
 <div id="simple-creation-of-forms" class="section level2">
 <h2 class="hasAnchor">
 <a href="#simple-creation-of-forms" class="anchor"></a>Simple creation of forms</h2>
@@ -79,46 +79,53 @@
 <span id="cb1-3"><a href="#cb1-3"></a>R<span class="op">&gt;</span><span class="st"> </span>s1 &lt;-<span class="st"> </span><span class="kw">fob_section</span>(<span class="st">"Next part"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4"></a>R<span class="op">&gt;</span><span class="st"> </span>q3 &lt;-<span class="st"> </span><span class="kw">fob_date</span>(<span class="st">"When was that?"</span>, <span class="st">"date"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5"></a>R<span class="op">&gt;</span><span class="st"> </span>q4 &lt;-<span class="st"> </span><span class="kw">fob_pattern</span>(<span class="st">"2 letters + 1 digit"</span>, <span class="st">"^[A-Za-z]{2}[0-9]$"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>R<span class="op">&gt;</span><span class="st"> </span>f1 &lt;-<span class="st"> </span><span class="kw">fob_output</span>(<span class="cf">function</span>(fruit, date, ...) <span class="kw">paste0</span>(date, <span class="st">": I ate one"</span>, fruit))</span>
-<span id="cb1-7"><a href="#cb1-7"></a>R<span class="op">&gt;</span><span class="st"> </span>myform &lt;-<span class="st"> </span>q1 <span class="op">%+%</span><span class="st"> </span>q2 <span class="op">%+%</span><span class="st"> </span>s1 <span class="op">%+%</span><span class="st"> </span>q3 <span class="op">%+%</span><span class="st"> </span>q4 <span class="op">%+%</span><span class="st"> </span>f1</span>
-<span id="cb1-8"><a href="#cb1-8"></a>R<span class="op">&gt;</span><span class="st"> </span>res &lt;-<span class="st"> </span><span class="kw">myform</span>()   </span>
-<span id="cb1-9"><a href="#cb1-9"></a>❓ Fruits?</span>
+<span id="cb1-6"><a href="#cb1-6"></a>R<span class="op">&gt;</span><span class="st"> </span>f1 &lt;-<span class="st"> </span><span class="kw">fob_output</span>(<span class="cf">function</span>(fruit, date, ...) <span class="kw">paste0</span>(<span class="st">"On "</span>, date, <span class="st">", I ate one "</span>, <span class="kw">tolower</span>(fruit)))</span>
+<span id="cb1-7"><a href="#cb1-7"></a>R<span class="op">&gt;</span><span class="st"> </span>f2 &lt;-<span class="st"> </span><span class="kw">fob_output</span>(<span class="cf">function</span>(shake, answer_<span class="dv">5</span>, ...) <span class="kw">ifelse</span>(shake, answer_<span class="dv">5</span>, <span class="st">"none"</span>), <span class="st">"shake"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>R<span class="op">&gt;</span><span class="st"> </span>myform &lt;-<span class="st"> </span>q1 <span class="op">%+%</span><span class="st"> </span>q2 <span class="op">%+%</span><span class="st"> </span>s1 <span class="op">%+%</span><span class="st"> </span>q3 <span class="op">%+%</span><span class="st"> </span>q4 <span class="op">%+%</span><span class="st"> </span>f1 <span class="op">%+%</span><span class="st"> </span>f2</span>
+<span id="cb1-9"><a href="#cb1-9"></a>R<span class="op">&gt;</span><span class="st"> </span>res &lt;-<span class="st">  </span><span class="kw">myform</span>()❓ Fruits?</span>
 <span id="cb1-10"><a href="#cb1-10"></a>ℹ Multiple choices<span class="op">:</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a><span class="dv">1</span><span class="op">:</span><span class="st"> </span>Apple</span>
 <span id="cb1-12"><a href="#cb1-12"></a><span class="dv">2</span><span class="op">:</span><span class="st"> </span>Pear</span>
 <span id="cb1-13"><a href="#cb1-13"></a>Enter your choice<span class="op">:</span><span class="st">  </span><span class="dv">1</span></span>
 <span id="cb1-14"><a href="#cb1-14"></a>⚠ Confirmed?</span>
 <span id="cb1-15"><a href="#cb1-15"></a>[Y]es or [N]o<span class="op">:</span><span class="st"> </span>Y</span>
-<span id="cb1-16"><a href="#cb1-16"></a>❓ Be or not to be</span>
-<span id="cb1-17"><a href="#cb1-17"></a>Enter [Y]es or [N]o<span class="op">:</span><span class="st">  </span>N</span>
-<span id="cb1-18"><a href="#cb1-18"></a>✔ validated<span class="op">!</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>☰ Next part</span>
-<span id="cb1-20"><a href="#cb1-20"></a>❓ When was that?</span>
-<span id="cb1-21"><a href="#cb1-21"></a>Enter your <span class="kw">answer</span> (a date <span class="op">%Y-%</span>m<span class="op">-</span>%d)<span class="op">:</span><span class="st">  </span><span class="dv">2020-12-01</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>✔ validated<span class="op">!</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>❓ <span class="dv">2</span> letters <span class="op">+</span><span class="st"> </span><span class="dv">1</span> digit ❓</span>
-<span id="cb1-24"><a href="#cb1-24"></a>Enter your answer<span class="op">:</span><span class="dv">000</span>  </span>
-<span id="cb1-25"><a href="#cb1-25"></a>⚠ Validation failed, try again<span class="op">!</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>Enter your answer<span class="op">:</span>ok1</span>
-<span id="cb1-27"><a href="#cb1-27"></a>✔ validated<span class="op">!</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a>R<span class="op">&gt;</span><span class="st"> </span>res</span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="op">$</span>answers</span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="op">$</span>answers<span class="op">$</span>fruit</span>
-<span id="cb1-32"><a href="#cb1-32"></a>[<span class="dv">1</span>] <span class="st">"Apple"</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="op">$</span>answers<span class="op">$</span>shake</span>
-<span id="cb1-35"><a href="#cb1-35"></a>[<span class="dv">1</span>] <span class="ot">FALSE</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="op">$</span>answers<span class="op">$</span>date</span>
-<span id="cb1-38"><a href="#cb1-38"></a>[<span class="dv">1</span>] <span class="st">"2020-12-01"</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">2</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a>[<span class="dv">1</span>] <span class="st">"ok1"</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>✔ validated<span class="op">!</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>❓ Be or not to be</span>
+<span id="cb1-18"><a href="#cb1-18"></a>Enter [Y]es or [N]o<span class="op">:</span><span class="st"> </span>N</span>
+<span id="cb1-19"><a href="#cb1-19"></a>✔ validated<span class="op">!</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>☰ Next part</span>
+<span id="cb1-21"><a href="#cb1-21"></a>❓ When was that?</span>
+<span id="cb1-22"><a href="#cb1-22"></a>Enter your <span class="kw">answer</span> (a date <span class="op">%Y-%</span>m<span class="op">-</span>%d)<span class="op">:</span><span class="st">  </span><span class="dv">2020-10-10</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>✔ validated<span class="op">!</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>❓ <span class="dv">2</span> letters <span class="op">+</span><span class="st"> </span><span class="dv">1</span> digit</span>
+<span id="cb1-25"><a href="#cb1-25"></a>Enter your answer<span class="op">:</span><span class="st"> </span>ok1</span>
+<span id="cb1-26"><a href="#cb1-26"></a>✔ validated<span class="op">!</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a></span>
+<span id="cb1-28"><a href="#cb1-28"></a>R<span class="op">&gt;</span><span class="st"> </span>res</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="op">$</span>answers</span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="op">$</span>answers<span class="op">$</span>fruit</span>
+<span id="cb1-31"><a href="#cb1-31"></a>[<span class="dv">1</span>] <span class="st">"Apple"</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="op">$</span>answers<span class="op">$</span>shake</span>
+<span id="cb1-34"><a href="#cb1-34"></a>[<span class="dv">1</span>] <span class="ot">FALSE</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="op">$</span>answers<span class="op">$</span>date</span>
+<span id="cb1-37"><a href="#cb1-37"></a>[<span class="dv">1</span>] <span class="st">"2020-10-10"</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">5</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>[<span class="dv">1</span>] <span class="st">"ok1"</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a></span>
 <span id="cb1-42"><a href="#cb1-42"></a></span>
-<span id="cb1-43"><a href="#cb1-43"></a></span>
-<span id="cb1-44"><a href="#cb1-44"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb1-45"><a href="#cb1-45"></a>[<span class="dv">1</span>] <span class="st">"form_answers"</span></span></code></pre></div>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="op">$</span>outputs</span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="op">$</span>outputs<span class="op">$</span>output_<span class="dv">1</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a>[<span class="dv">1</span>] <span class="st">"On 2020-10-10, I ate one apple"</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a></span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="op">$</span>outputs<span class="op">$</span>output_<span class="dv">2</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a>[<span class="dv">1</span>] <span class="st">"none"</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a></span>
+<span id="cb1-50"><a href="#cb1-50"></a></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb1-52"><a href="#cb1-52"></a>[<span class="dv">1</span>] <span class="st">"form_answers"</span></span></code></pre></div>
 <p>Alternatively, you can use <code><a href="reference/join.html">join(q1, q2, q3, q4)</a></code> to create the same form. Note that forms can also be combined, just as questions, so what follows</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">R</span><span class="op">&gt;</span> <span class="va">q5</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/fob_int.html">fob_int</a></span><span class="op">(</span><span class="st">"How many?"</span><span class="op">)</span>
@@ -139,8 +146,11 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">answers</span><span class="kw">:</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="at">  </span><span class="fu">fruit</span><span class="kw">:</span><span class="at"> Apple</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="at">  </span><span class="fu">shake</span><span class="kw">:</span><span class="at"> </span><span class="ch">no</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="at">  </span><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">'2020-12-01'</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="at">  </span><span class="fu">answer_2</span><span class="kw">:</span><span class="at"> ok1</span></span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="at">  </span><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">'2020-10-10'</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="at">  </span><span class="fu">answer_2</span><span class="kw">:</span><span class="at"> ok1</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="fu">outputs</span><span class="kw">:</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="at">  </span><span class="fu">output_1</span><span class="kw">:</span><span class="at"> On 2020-10-10, I ate one apple</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="at">  </span><span class="fu">output_2</span><span class="kw">:</span><span class="at"> none</span></span></code></pre></div>
 </div>
 <div id="direct-validation" class="section level2">
 <h2 class="hasAnchor">
@@ -157,35 +167,52 @@
 <span id="cb5-9"><a href="#cb5-9"></a><span class="op">$</span>answers<span class="op">$</span>date</span>
 <span id="cb5-10"><a href="#cb5-10"></a>[<span class="dv">1</span>] <span class="st">"2010-01-01"</span></span>
 <span id="cb5-11"><a href="#cb5-11"></a></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">2</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">5</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a>[<span class="dv">1</span>] <span class="st">"ok1"</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">2</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">6</span></span>
 <span id="cb5-16"><a href="#cb5-16"></a>[<span class="dv">1</span>] <span class="dv">1</span></span>
 <span id="cb5-17"><a href="#cb5-17"></a></span>
 <span id="cb5-18"><a href="#cb5-18"></a></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb5-20"><a href="#cb5-20"></a>[<span class="dv">1</span>] <span class="st">"form_answers"</span></span></code></pre></div>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="op">$</span>outputs</span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="op">$</span>outputs<span class="op">$</span>output_<span class="dv">1</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>[<span class="dv">1</span>] <span class="st">"On 2010-01-01, I ate one apple"</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="op">$</span>outputs<span class="op">$</span>output_<span class="dv">2</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>[<span class="dv">1</span>] <span class="st">"ok1"</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>[<span class="dv">1</span>] <span class="st">"form_answers"</span></span></code></pre></div>
 <p>Currently <code>NA</code> is returned when the format is not correct</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">$</span>answers</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="op">$</span>answers<span class="op">$</span>fruit</span>
-<span id="cb6-3"><a href="#cb6-3"></a>[<span class="dv">1</span>] <span class="st">"Apple"</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="op">$</span>answers<span class="op">$</span>shake</span>
-<span id="cb6-6"><a href="#cb6-6"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="op">$</span>answers<span class="op">$</span>date</span>
-<span id="cb6-9"><a href="#cb6-9"></a>[<span class="dv">1</span>] <span class="st">"2010-01-01"</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">2</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>[<span class="dv">1</span>] <span class="st">"ok1"</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">2</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a>[<span class="dv">1</span>] <span class="ot">NA</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">myform2</span>(<span class="dv">1</span>, <span class="st">"Y"</span>, <span class="st">"2010-01-01"</span>, <span class="st">"ok1"</span>, <span class="fl">1.1</span>)                        </span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="op">$</span>answers</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="op">$</span>answers<span class="op">$</span>fruit</span>
+<span id="cb6-4"><a href="#cb6-4"></a>[<span class="dv">1</span>] <span class="st">"Apple"</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="op">$</span>answers<span class="op">$</span>shake</span>
+<span id="cb6-7"><a href="#cb6-7"></a>[<span class="dv">1</span>] <span class="ot">TRUE</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="op">$</span>answers<span class="op">$</span>date</span>
+<span id="cb6-10"><a href="#cb6-10"></a>[<span class="dv">1</span>] <span class="st">"2010-01-01"</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">5</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>[<span class="dv">1</span>] <span class="st">"ok1"</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="op">$</span>answers<span class="op">$</span>answer_<span class="dv">6</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>[<span class="dv">1</span>] <span class="ot">NA</span></span>
 <span id="cb6-17"><a href="#cb6-17"></a></span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
-<span id="cb6-19"><a href="#cb6-19"></a>[<span class="dv">1</span>] <span class="st">"form_answers"</span></span></code></pre></div>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="op">$</span>outputs</span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="op">$</span>outputs<span class="op">$</span>output_<span class="dv">1</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a>[<span class="dv">1</span>] <span class="st">"On 2010-01-01, I ate one apple"</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="op">$</span>outputs<span class="op">$</span>output_<span class="dv">2</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a>[<span class="dv">1</span>] <span class="st">"ok1"</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a></span>
+<span id="cb6-26"><a href="#cb6-26"></a></span>
+<span id="cb6-27"><a href="#cb6-27"></a><span class="kw">attr</span>(,<span class="st">"class"</span>)</span>
+<span id="cb6-28"><a href="#cb6-28"></a>[<span class="dv">1</span>] <span class="st">"form_answers"</span></span></code></pre></div>
 </div>
 <div id="meta" class="section level2">
 <h2 class="hasAnchor">
