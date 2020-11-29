@@ -11,9 +11,10 @@ An R :package: to readily build forms with the command line interface.
 ```R
 R> q1 <- fob_among("Fruits?", c("Apple", "Pear"), "fruit", confirm = TRUE)
 R> q2 <- fob_yorn("Be or not to be", "shake")
+R> s1 <- fob_section("Next part")
 R> q3 <- fob_date("When was that?", "date")
 R> q4 <- fob_pattern("2 letters + 1 digit", "^[A-Za-z]{2}[0-9]$")
-R> myform <- q1 %+% q2 %+% q3 %+% q4
+R> myform <- q1 %+% q2 %+% s1 %+% q3 %+% q4
 R> res <- myform()   
 ❓ Fruits? ❓
 ℹ Multiple choices:
@@ -27,6 +28,7 @@ Enter your choice: 1
 Enter [Y]es or [N]o: N
 ✔ validated!
 ❓ When was that? ❓
+☰ Next part
 Enter your answer (a date %Y-%m-%d): 2010-12-01 
 ✔ validated!
 ❓ 2 letters + 1 digit ❓
@@ -63,6 +65,10 @@ R> myform2 <- myform %+% q5
 adds one question to the previous form, the answer to which should be an integer. 
 Also, see `multi()` to repeat the form, e.g `multi(myform, 2)`.
 
+
+## Form from file 
+
+See `form_from_file()`.
 
 
 ## Exportation of the results 
@@ -108,7 +114,7 @@ attr(,"class")
 [1] "form_answers"
 ```
 
-Currently a `NA` is returned when the format is not correct 
+Currently `NA` is returned when the format is not correct 
 
 ```R 
 R> myform2(1, "Y", "2010-01-01", "ok1", 1.2)

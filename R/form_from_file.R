@@ -16,15 +16,19 @@ form_from_file <- function(con) {
 
 
 form_from_oneline <- function(x) {
-  tmp <- unlist(strsplit(x, ";"))
-  # 2 elements minimal
-  do.call(fob_any, 
-    list(
-    question = extract_pars(tmp, "q:"),
-    type = extract_pars(tmp, "t:"),
-    prompt = extract_pars(tmp, "p:", TRUE),
-    field_name = extract_pars(tmp, "f:", TRUE)
-  ))
+  if (grepl("^#", x)) {
+    fob_section(trimws(sub("^#(.+)", "\\1", x)))
+  } else {
+    tmp <- unlist(strsplit(x, ";"))
+    # 2 elements minimal
+    do.call(fob_any, 
+      list(
+      question = extract_pars(tmp, "q:"),
+      type = extract_pars(tmp, "t:"),
+      prompt = extract_pars(tmp, "p:", TRUE),
+      field_name = extract_pars(tmp, "f:", TRUE)
+    ))
+  }
 }
 
 
