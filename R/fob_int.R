@@ -57,12 +57,12 @@ fob_char <- function(question, field_name = "", prompt = NULL) {
 #' @describeIn fob_int `TRUE` for yes and `FALSE` for no.
 
 fob_yorn <- function(question, field_name = "", 
-  prompt = "Enter [Y]es or [N]o: ", ...) { 
+  prompt = "Enter [Y]es or [N]o:", ...) { 
   
   f_post <- function(x) grepl("^Y", x)
   
   generate_form_pattern(
-    prompt = "Enter [Y]es or [N]o: ", 
+    prompt = "Enter [Y]es or [N]o:", 
     question = question, 
     pattern = "^[NY]$|^YES$|^NO$", 
     pre = toupper, 
@@ -76,12 +76,12 @@ fob_yorn <- function(question, field_name = "",
 #' @describeIn fob_int one boolean/logical (i.e. `TRUE` or `FALSE`).
 
 fob_bool <- function(question, field_name = "", 
-  prompt = "Enter [T]RUE or [F]ALSE: ", ...) { 
+  prompt = "Enter [T]RUE or [F]ALSE:", ...) { 
   
   f_post <- function(x) grepl("^T", x)
   
   generate_form_pattern(
-    prompt = "Enter [Y]es or [N]o: ", 
+    prompt = "Enter [Y]es or [N]o:", 
     question = question, 
     pattern = "^[TF]$|^TRUE$|^FALSE$", 
     field_name = field_name,

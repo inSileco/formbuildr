@@ -31,11 +31,11 @@ res1 <- myform(1, 'Y')
 res2 <- myform(1, 'j')
 res3 <- myform2(1, 'Y', "2012-01-11")
 test_that("direct validation form", {
-  expect_equal(res1[[1]], "Apple")
-  expect_true(res1[[2]])
-  expect_true(is.na(res2[[2]]))
-  expect_equal(res3[[1]], res1[[1]][[1]])
-  expect_equal(res3[[3]], "2012-01-11")
+  expect_equal(res1[[1]][[1]], "Apple")
+  expect_true(res1$answers[[2]])
+  expect_true(is.na(res2$answers$shake))
+  expect_equal(res3[[1]][[1]], res1[[1]][[1]])
+  expect_equal(res3[[1]][[3]], "2012-01-11")
 })
   
 test_that("classes", {

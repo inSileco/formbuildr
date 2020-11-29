@@ -10,6 +10,6 @@ test_that("Error", {
 form1 <- form_from_file("files_test/form_right.txt")
 res <- form1("1", "2020-11-27")
 test_that("Form from file", {
-  expect_equal(res$apples, 1)
-  expect_equal(res$today, "2020-11-27")
+  expect_equal(res$answers$apples, 1)
+  expect_equal(res$answers$today, "2020-11-27")
 })

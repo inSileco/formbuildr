@@ -31,7 +31,7 @@ join <- function(...) {
       out <- out[cls != "section"]
     }
     names(out) <- nms
-    structure(out, class = "form_answers")
+    structure(list(answers = out), class = "form_answers")
   }, class = c("form"), field_name = nms, funs = funs)
 
 }

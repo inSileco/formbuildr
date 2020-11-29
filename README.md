@@ -16,39 +16,40 @@ R> q3 <- fob_date("When was that?", "date")
 R> q4 <- fob_pattern("2 letters + 1 digit", "^[A-Za-z]{2}[0-9]$")
 R> myform <- q1 %+% q2 %+% s1 %+% q3 %+% q4
 R> res <- myform()   
-❓ Fruits? ❓
+❓ Fruits?
 ℹ Multiple choices:
-1 :  Apple 
-2 :  Pear 
-Enter your choice: 1
+1: Apple
+2: Pear
+Enter your choice:  1
 ⚠ Confirmed?
-[Y]es or [N]o: Y 
+[Y]es or [N]o: Y
+❓ Be or not to be
+Enter [Y]es or [N]o:  N
 ✔ validated!
-❓ Be or not to be ❓
-Enter [Y]es or [N]o: N
-✔ validated!
-❓ When was that? ❓
 ☰ Next part
-Enter your answer (a date %Y-%m-%d): 2010-12-01 
+❓ When was that?
+Enter your answer (a date %Y-%m-%d):  2020-12-01
 ✔ validated!
 ❓ 2 letters + 1 digit ❓
 Enter your answer:000  
 ⚠ Validation failed, try again!
-Enter your answer:lo1
+Enter your answer:ok1
 ✔ validated!
 
 R> res
-$fruit
+$answers
+$answers$fruit
 [1] "Apple"
 
-$shake
+$answers$shake
 [1] FALSE
 
-$date
-[1] "2010-12-01"
+$answers$date
+[1] "2020-12-01"
 
-$answer_4
-[1] "lo1"
+$answers$answer_2
+[1] "ok1"
+
 
 attr(,"class")
 [1] "form_answers"
@@ -82,10 +83,11 @@ R> export_answer(res, "answers.yaml")
 creates `answers.yaml` with the following content:
 
 ```yaml
-fruit: Apple
-shake: no
-date: '2010-12-01'
-answer_4: lo1
+answers:
+  fruit: Apple
+  shake: no
+  date: '2020-12-01'
+  answer_2: ok1
 ```
 
 
@@ -95,20 +97,22 @@ Once a form created it can be also used for direct validation, i.e. one can skip
 
 ```R 
 R> myform2(1, "Y", "2010-01-01", "ok1", 1)
-$fruit
+$answers
+$answers$fruit
 [1] "Apple"
 
-$shake
-[1] FALSE
+$answers$shake
+[1] TRUE
 
-$date
+$answers$date
 [1] "2010-01-01"
 
-$answer_2
+$answers$answer_2
 [1] "ok1"
 
-$answer_2
+$answers$answer_2
 [1] 1
+
 
 attr(,"class")
 [1] "form_answers"
@@ -117,21 +121,22 @@ attr(,"class")
 Currently `NA` is returned when the format is not correct 
 
 ```R 
-R> myform2(1, "Y", "2010-01-01", "ok1", 1.2)
-$fruit
+$answers
+$answers$fruit
 [1] "Apple"
 
-$shake
-[1] FALSE
+$answers$shake
+[1] TRUE
 
-$date
+$answers$date
 [1] "2010-01-01"
 
-$answer_2
+$answers$answer_2
 [1] "ok1"
 
-$answer_2
+$answers$answer_2
 [1] NA
+
 
 attr(,"class")
 [1] "form_answers"

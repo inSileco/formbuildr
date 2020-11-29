@@ -51,6 +51,6 @@ fob_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) 
 fob_email <- function(question, field_name = "", prompt = NULL, ...) {
   if (is.null(prompt)) prompt <- "Enter your email: "
   generate_form_pattern(question = question, prompt = prompt, 
-    pattern = "^[[:graph:]]+@[[:graph:]]+\\.[[:graph:]]{2,}$", pre = NULL, post = NULL, confirm = FALSE,
-    field_name = field_name)
+    pattern = "^[[:graph:]]+@[[:graph:]]+\\.[[:graph:]]{2,}$", pre = NULL, 
+    post = NULL, confirm = FALSE, field_name = field_name)
 } 
