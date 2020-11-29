@@ -22,7 +22,7 @@ fob_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) 
   
   if (is.null(prompt)) {
     if (is.null(max)) {
-      prompt <- paste0("Enter your answer: ")
+      prompt <- paste0("Enter your answer:")
     } else {
       prompt <- paste0("Enter your answer (max characters = ", max, "): ")
     }  
@@ -49,7 +49,7 @@ fob_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) 
 #' @describeIn fob_word a character string. 
 #' @export
 fob_email <- function(question, field_name = "", prompt = NULL, ...) {
-  if (is.null(prompt)) prompt <- "Enter your email: "
+  if (is.null(prompt)) prompt <- "Enter your email:"
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[[:graph:]]+@[[:graph:]]+\\.[[:graph:]]{2,}$", pre = NULL, 
     post = NULL, confirm = FALSE, field_name = field_name)

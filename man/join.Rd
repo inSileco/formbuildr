@@ -10,12 +10,12 @@ join(...)
 x \%+\% y
 }
 \arguments{
-\item{...}{object(s) of class \code{form_partial} or \code{form}.}
+\item{...}{object(s) of class \code{form_partial}, \code{form}, \code{section} or \code{output}.}
 
-\item{x, y}{objects of class \code{form_partial} or \code{form}.}
+\item{x, y}{objects of class \code{form_partial}, \code{form}, \code{section} or \code{output}.}
 }
 \value{
-\code{TRUE} for yes and \code{FALSE} for no.
+A form.
 }
 \description{
 objects of class \code{form_partial} or \code{form}

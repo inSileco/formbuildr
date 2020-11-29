@@ -20,7 +20,7 @@ fob_among <- function(question, choices, field_name = "", output = "choice",
   }
   
   generate_form_choices(
-    prompt = "Enter your choice: ", 
+    prompt = "Enter your choice:", 
     question = question,
     choices = choices,
     field_name = field_name,

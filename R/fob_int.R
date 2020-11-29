@@ -10,7 +10,7 @@
 #' @export
 
 fob_int <- function(question, field_name = "", prompt = NULL) {
-  if (is.null(prompt)) prompt <- "Enter your answer (an integer): "
+  if (is.null(prompt)) prompt <- "Enter your answer (an integer):"
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+$", confirm = FALSE, pre = NULL, post = as.integer, field_name = field_name)
 } 
@@ -18,7 +18,7 @@ fob_int <- function(question, field_name = "", prompt = NULL) {
 #' @describeIn fob_int one numeric. 
 #' @export
 fob_num <- function(question, field_name = "", prompt = NULL) {
-  if (is.null(prompt)) prompt <- "Enter your answer (a numeric): "
+  if (is.null(prompt)) prompt <- "Enter your answer (a numeric):"
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "^[0-9]+\\.?[0-9]*$|^[0-9]*\\.?[0-9]+$", confirm = FALSE,
     pre = NULL, post = as.numeric, field_name = field_name)
@@ -30,7 +30,7 @@ fob_date <- function(question, field_name = "", format = "%Y-%m-%d",
   prompt = NULL, ...) {
     
   if (is.null(prompt)) 
-    prompt <- paste0("Enter your answer (a date ", format, "): ")
+    prompt <- paste0("Enter your answer (a date ", format, "):")
   # as.list needed otherwise will be coerced to numeric
   f_pre <- function(x) {
     out <- as.Date.character(x, format = format)
@@ -48,7 +48,7 @@ fob_date <- function(question, field_name = "", format = "%Y-%m-%d",
 #' @describeIn fob_int a character. 
 #' @export
 fob_char <- function(question, field_name = "", prompt = NULL) {
-  if (is.null(prompt)) prompt <- "Enter your answer (a numeric): "
+  if (is.null(prompt)) prompt <- "Enter your answer (a numeric):"
   generate_form_pattern(question = question, prompt = prompt, 
     pattern = "*.", confirm = FALSE,
     pre = NULL, post = as.numeric, field_name = field_name)
@@ -62,7 +62,7 @@ fob_yorn <- function(question, field_name = "",
   f_post <- function(x) grepl("^Y", x)
   
   generate_form_pattern(
-    prompt = "Enter [Y]es or [N]o:", 
+    prompt = prompt, 
     question = question, 
     pattern = "^[NY]$|^YES$|^NO$", 
     pre = toupper, 
@@ -81,7 +81,7 @@ fob_bool <- function(question, field_name = "",
   f_post <- function(x) grepl("^T", x)
   
   generate_form_pattern(
-    prompt = "Enter [Y]es or [N]o:", 
+    prompt = prompt, 
     question = question, 
     pattern = "^[TF]$|^TRUE$|^FALSE$", 
     field_name = field_name,
