@@ -19,9 +19,9 @@ fob_pattern(
 
 \item{field_name}{Name of the field (optional).}
 
-\item{prompt}{the string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
+\item{prompt}{The string printed when prompting the user for input (see \code{\link[=readline]{readline()}}).}
 
-\item{...}{further arguments passed to \code{\link[=generate_form_pattern]{generate_form_pattern()}}.}
+\item{...}{Further arguments passed to \code{\link[=generate_form_pattern]{generate_form_pattern()}}.}
 }
 \value{
 answer validated.

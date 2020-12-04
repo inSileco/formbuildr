@@ -41,5 +41,6 @@ fob_weekday <- function(question, field_name = "", output = c("choice", "id"), .
   fob_among(question, weekdays(ISOdate(2004,1,5:11)), field_name, output)
 }
 
-# Sys.setlocale("LC_TIME"e,"fr_FR") ;format(ISOdate(2004,1:12,1), "%B")
+# Sys.setlocale("LC_TIME"e,"fr_FR");
+# format(ISOdate(2004,1:12,1), "%B")
 

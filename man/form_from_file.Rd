@@ -13,10 +13,12 @@ form_from_file(con)
 Create a form from a connection.
 }
 \details{
+This function reas
 \itemize{
-\item q: question
-\item t: type
-\item p: prompt message (optional)
-\item f: field name (optional)
+\item \verb{q:} question
+\item \verb{t:} type
+\item \verb{p:} prompt message (optional)
+\item \verb{f:} field name (optional)
+\item \verb{#'} a section
 }
 }

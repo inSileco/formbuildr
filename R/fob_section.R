@@ -2,7 +2,7 @@
 #'
 #' @param msg a character string that will be displayed. 
 #' 
-#' @return one integer.
+#' @return A `section` object.
 #' @export
 
 fob_section <- function(msg) {

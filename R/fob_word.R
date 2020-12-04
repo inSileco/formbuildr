@@ -24,7 +24,7 @@ fob_text <- function(question, field_name = "", max = NULL, prompt = NULL, ...) 
     if (is.null(max)) {
       prompt <- paste0("Enter your answer:")
     } else {
-      prompt <- paste0("Enter your answer (max characters = ", max, "): ")
+      prompt <- paste0("Enter your answer (max characters = ", max, "):")
     }  
   }
   

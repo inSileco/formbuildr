@@ -7,9 +7,9 @@
 fob_any(type, ...)
 }
 \arguments{
-\item{type}{at the type of answer expected.}
+\item{type}{Type of answer expected.}
 
-\item{...}{further arguments passed to the question function.}
+\item{...}{Further arguments passed to the question function.}
 }
 \description{
 Generate any kind of question.

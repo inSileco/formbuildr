@@ -78,7 +78,5 @@ name_outputs <- function(x) {
 } 
  
 name_outputs_unit <- function(x, n) {
-  if (is.null(x)) {
-    glue("output_{n}")
-  } else x
+  if (is.null(x)) glue("output_{n}") else x
 }

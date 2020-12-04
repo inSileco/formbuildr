@@ -1,0 +1,75 @@
+---
+title: "formbuildr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{formbuildr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The package `formbuildr` was designed to readily create forms using the R console or a plain text file. A form is made of a series of questions and post-processing functions combined. 
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(formbuildr)
+```
+
+
+
+
+# Create a form with R console 
+
+## Questions
+
+
+```{R q1}
+q1 <- fob_int("How old are you?")
+class(q1)
+```
+
+Various questions with answers of pre-determined types are already implemented. 
+
+```R
+R> q1()                                                            
+❓ How old are you?
+Enter your answer (an integer): 10                                 
+✔ validated!
+[1] 10
+```
+
+In interactive mode, validation are done interactively.
+
+```R
+R> q1()                                                            
+❓ How old are you?
+Enter your answer (an integer): 10.1                               
+⚠ Validation failed, try again!
+Enter your answer (an integer): 10                                 
+✔ validated!
+[1] 10
+```
+
+
+
+
+
+
+
+
+## Combining questions
+
+## Post-processing 
+
+<!-- depending on the function, is automatically validated. -->
+
+
+# Create a form from a plain text
+
+
+# Example 

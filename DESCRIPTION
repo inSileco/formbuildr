@@ -1,6 +1,6 @@
 Package: formbuildr
 Title: Form builder
-Date: 2020-11-29
+Date: 2020-12-03
 Version: 0.0.0.9000
 Authors@R: c(
   person("Kevin", "Cazelles", email = "kevin.cazelles@gmail.com", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre")),
@@ -16,10 +16,9 @@ Imports:
     glue,
     yaml
 Suggests:
-    anytime,
     knitr,
     testthat,
-    whisker
+    rmarkdown
 URL: https://github.com/inSileco/formbuildr, http://insileco.github.io/formbuildr
 BugReports: https://github.com/inSileco/formbuildr/issues
 Encoding: UTF-8

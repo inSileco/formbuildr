@@ -7,7 +7,7 @@
 export_answer(x, file, format = "yaml")
 }
 \arguments{
-\item{x}{object of class \code{form_answers} or \code{form}.}
+\item{x}{object of class \code{form_answers}.}
 
 \item{file}{file name.}
 

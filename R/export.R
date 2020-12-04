@@ -1,6 +1,6 @@
 #' Export answers.
 #' 
-#' @param x object of class `form_answers` or `form`. 
+#' @param x object of class `form_answers`.  
 #' @param file file name.
 #' @param format So far only YAML is available.
 #'

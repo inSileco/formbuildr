@@ -3,11 +3,12 @@
 #' @param con a connection object or a character string (see [readLines()]).
 #'
 #' @details 
-#' * q: question  
-#' * t: type  
-#' * p: prompt message (optional)  
-#' * f: field name (optional)
-#'  
+#' This function reas 
+#' * `q:` question  
+#' * `t:` type  
+#' * `p:` prompt message (optional)  
+#' * `f:` field name (optional)
+#' * `#'` a section
 #' @export
 
 form_from_file <- function(con) {

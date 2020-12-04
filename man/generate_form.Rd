@@ -4,7 +4,7 @@
 \alias{generate_form}
 \alias{generate_form_pattern}
 \alias{generate_form_choices}
-\title{Generate form}
+\title{Generate form partials}
 \usage{
 generate_form(
   prompt = "",
@@ -46,22 +46,38 @@ generate_form_choices(
 
 \item{choices}{A vector of choices.}
 
-\item{validate}{A function used to validate the answer, if \code{NULL} then validation step is ignored.}
+\item{validate}{A function used to validate the answer (see details), if \code{NULL} then validation step is ignored.}
 
-\item{confirm}{a logical. Should the answer be confirmed (default is FALSE).}
+\item{confirm}{a logical. Should the answer be confirmed (default is \code{FALSE}).}
 
-\item{pre}{A function for pre processing.}
+\item{pre}{A function for pre-processing.}
 
-\item{post}{A function for post processing.}
+\item{post}{A function for post-processing.}
 
-\item{field_name}{Name of the field (optional).}
+\item{field_name}{Field name (optional) that will be used in the list of answer.}
 
 \item{extra_space}{extra space in prompt line.}
 
-\item{pattern}{pattern to be matched.}
+\item{pattern}{pattern to be matched (see \code{\link[=grepl]{grepl()}}.}
+}
+\value{
+A object of class \code{form_partial}.
 }
 \description{
-Generate form
+Functions that generate object of class \code{form_partials}.
+}
+\details{
+The object of class \code{form_partial} returned is a function with one argument (\code{x}) that triggers the following actions once called:
+\enumerate{
+\item displays a question to be asked (\code{question});
+\item prompts a message (\code{prompt}) that is used to specify the nature of the input;
+\item if \code{confirm = TRUE} then a confirmation messages will be prompted;
+\item (optional) calls the function \code{pre} that transforms the input;
+\item validates the input (\code{validate}), i.e. returns \code{TRUE} if the input (that may have been transformed) is valid;
+\item (optional) applies a function (\code{post}) to the validated input that thereby becomes output
+}
+
+The argument \code{x} of a \code{form_partial} is set to \code{NULL}, it can however be set to a different value. In such case, once the object is called, the interactive steps (the first three steps aforementioned) are skipped and the input goes through the 3 last steps. If the input is not validated then \code{NA} will be returned.
 }
 \section{Functions}{
 \itemize{

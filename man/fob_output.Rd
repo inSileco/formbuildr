@@ -9,7 +9,7 @@ fob_output(FUN, field_name = NULL)
 \arguments{
 \item{FUN}{a function a character string that will be displayed.}
 
-\item{field_name}{field_name.}
+\item{field_name}{Field name.}
 }
 \value{
 An object of class \code{output}.

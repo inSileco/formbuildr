@@ -10,7 +10,7 @@ fob_section(msg)
 \item{msg}{a character string that will be displayed.}
 }
 \value{
-one integer.
+A \code{section} object.
 }
 \description{
 Add a section.

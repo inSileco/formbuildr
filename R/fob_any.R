@@ -1,7 +1,7 @@
 #' Generate any kind of question.
 #' 
-#' @param type at the type of answer expected. 
-#' @param ... further arguments passed to the question function. 
+#' @param type Type of answer expected. 
+#' @param ... Further arguments passed to the question function. 
 #' @export
 
 fob_any <- function(type, ...) {

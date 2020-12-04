@@ -3,8 +3,8 @@
 #' @param question The question to be asked. 
 #' @param pattern Pattern to be matched. 
 #' @param field_name Name of the field (optional).
-#' @param prompt the string printed when prompting the user for input (see [readline()]).
-#' @param ... further arguments passed to [generate_form_pattern()].
+#' @param prompt The string printed when prompting the user for input (see [readline()]).
+#' @param ... Further arguments passed to [generate_form_pattern()].
 #' 
 #' @return answer validated.
 #' @export
