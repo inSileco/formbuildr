@@ -6,14 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate form — generate_form • formbuildr</title>
+<title>Generate form partials — generate_form • formbuildr</title>
 
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Generate form — generate_form" />
-<meta property="og:description" content="Generate form" />
+<meta property="og:title" content="Generate form partials — generate_form" />
+<meta property="og:description" content="Functions that generate object of class form_partials." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">formbuildr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -83,6 +83,9 @@
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
+</li>
+<li>
+  <a href="../articles/formbuildr.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -108,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate form</h1>
+    <h1>Generate form partials</h1>
     <small class="dont-index">Source: <a href='https://github.com/inSileco/formbuildr/blob/master/R/generate.R'><code>R/generate.R</code></a></small>
     <div class="hidden name"><code>generate_form.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generate form</p>
+    <p>Functions that generate object of class <code>form_partials</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>generate_form</span><span class='op'>(</span>
@@ -167,23 +170,23 @@
     </tr>
     <tr>
       <th>validate</th>
-      <td><p>A function used to validate the answer, if <code>NULL</code> then validation step is ignored.</p></td>
+      <td><p>A function used to validate the answer (see details), if <code>NULL</code> then validation step is ignored.</p></td>
     </tr>
     <tr>
       <th>confirm</th>
-      <td><p>a logical. Should the answer be confirmed (default is FALSE).</p></td>
+      <td><p>a logical. Should the answer be confirmed (default is <code>FALSE</code>).</p></td>
     </tr>
     <tr>
       <th>pre</th>
-      <td><p>A function for pre processing.</p></td>
+      <td><p>A function for pre-processing.</p></td>
     </tr>
     <tr>
       <th>post</th>
-      <td><p>A function for post processing.</p></td>
+      <td><p>A function for post-processing.</p></td>
     </tr>
     <tr>
       <th>field_name</th>
-      <td><p>Name of the field (optional).</p></td>
+      <td><p>Field name (optional) that will be used in the list of answer.</p></td>
     </tr>
     <tr>
       <th>extra_space</th>
@@ -191,10 +194,25 @@
     </tr>
     <tr>
       <th>pattern</th>
-      <td><p>pattern to be matched.</p></td>
+      <td><p>pattern to be matched (see <code><a href='https://rdrr.io/r/base/grep.html'>grepl()</a></code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A object of class <code>form_partial</code>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The object of class <code>form_partial</code> returned is a function with one argument (<code>x</code>) that triggers the following actions once called:</p><ol>
+<li><p>displays a question to be asked (<code>question</code>);</p></li>
+<li><p>prompts a message (<code>prompt</code>) that is used to specify the nature of the input;</p></li>
+<li><p>if <code>confirm = TRUE</code> then a confirmation messages will be prompted;</p></li>
+<li><p>(optional) calls the function <code>pre</code> that transforms the input;</p></li>
+<li><p>validates the input (<code>validate</code>), i.e. returns <code>TRUE</code> if the input (that may have been transformed) is valid;</p></li>
+<li><p>(optional) applies a function (<code>post</code>) to the validated input that thereby becomes output</p></li>
+</ol>
+
+<p>The argument <code>x</code> of a <code>form_partial</code> is set to <code>NULL</code>, it can however be set to a different value. In such case, once the object is called, the interactive steps (the first three steps aforementioned) are skipped and the input goes through the 3 last steps. If the input is not validated then <code>NA</code> will be returned.</p>
     <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
     
